@@ -1,0 +1,17 @@
+{"level":"INFO","time":"2025-10-13T14:32:09.957+0800","caller":"runfast-go/setup.go:37","msg":"项目启动完毕"}
+{"level":"INFO","time":"2025-10-13T14:34:48.660+0800","caller":"runfast-go/setup.go:37","msg":"项目启动完毕"}
+{"level":"INFO","time":"2025-10-13T14:34:58.117+0800","caller":"app/response.go:53","msg":"Response api_resp_bad ErrCode: 1 Msg: fail"}
+{"level":"INFO","time":"2025-10-13T14:34:58.117+0800","caller":"app/response.go:63","msg":"/ms_demo接口access_log"}
+{"level":"INFO","time":"2025-10-13T14:35:57.150+0800","caller":"app/response.go:53","msg":"Response api_resp_bad ErrCode: 1 Msg: fail"}
+{"level":"INFO","time":"2025-10-13T14:35:57.150+0800","caller":"app/response.go:63","msg":"/ms_demo接口access_log"}
+{"level":"INFO","time":"2025-10-13T14:36:48.156+0800","caller":"runfast-go/setup.go:37","msg":"项目启动完毕"}
+{"level":"INFO","time":"2025-10-13T14:36:49.706+0800","caller":"app/response.go:53","msg":"Response api_resp_bad ErrCode: 1 Msg: fail"}
+{"level":"INFO","time":"2025-10-13T14:36:49.706+0800","caller":"app/response.go:63","msg":"/ms_demo接口access_log"}
+{"level":"INFO","time":"2025-10-13T14:43:43.916+0800","caller":"app/response.go:53","msg":"Response api_resp_bad ErrCode: 1 Msg: fail"}
+{"level":"INFO","time":"2025-10-13T14:43:43.916+0800","caller":"app/response.go:63","msg":"/ms_demo接口access_log"}
+{"level":"INFO","time":"2025-10-13T14:43:45.228+0800","caller":"app/response.go:53","msg":"Response api_resp_bad ErrCode: 1 Msg: fail"}
+{"level":"INFO","time":"2025-10-13T14:43:45.228+0800","caller":"app/response.go:63","msg":"/ms_demo接口access_log"}
+{"level":"INFO","time":"2025-10-13T14:44:38.737+0800","caller":"runfast-go/setup.go:37","msg":"项目启动完毕"}
+{"level":"INFO","time":"2025-10-13T14:44:43.742+0800","caller":"app/response.go:63","msg":"/ms_demo接口access_log"}
+{"level":"INFO","time":"2025-10-13T14:52:23.855+0800","caller":"runfast-go/setup.go:34","msg":"项目启动完毕"}
+{"level":"INFO","time":"2025-10-13T14:52:30.420+0800","caller":"app/response.go:63","msg":"/ms_demo接口access_log"}
