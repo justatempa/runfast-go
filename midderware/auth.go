@@ -2,26 +2,68 @@ package midderware
 
 import (
 	"net/http"
+	"strings"
+
 	"github.com/justatempa/runfast-go/conf"
 	"github.com/justatempa/runfast-go/pkg/app"
 
 	"github.com/gin-gonic/gin"
 )
 
+// TokenManager 实例
+var tokenManager *app.TokenManager
+
+// InitTokenManager 初始化TokenManager
+func InitTokenManager(adminToken string) {
+	tokenManager = app.NewTokenManager(adminToken)
+}
+
+// GetTokenManager 获取TokenManager实例
+func GetTokenManager() *app.TokenManager {
+	return tokenManager
+}
+
 func Verify(c *gin.Context) {
 	var (
-		app = app.Gin{C: c}
+		ginApp = app.Gin{C: c}
 	)
 
-	auth := true
-
-	if auth == false {
-		status := 10000
-		app.ResponseWithMsgAndCode(http.StatusOK, status, conf.GetAccountErr(status), nil)
+	// 从Header中获取Authorization
+	authHeader := c.GetHeader(conf.Authorization)
+	if authHeader == "" {
+		status := 10001 // 未提供Authorization header
+		ginApp.ResponseWithMsgAndCode(http.StatusUnauthorized, status, conf.GetAccountErr(status), nil)
 		c.Abort()
 		return
 	}
 
+	// 提取Bearer token
+	tokenString := strings.TrimPrefix(authHeader, "Bearer ")
+	if tokenString == authHeader {
+		status := 10002 // Authorization header格式错误
+		ginApp.ResponseWithMsgAndCode(http.StatusUnauthorized, status, conf.GetAccountErr(status), nil)
+		c.Abort()
+		return
+	}
+
+	// 验证Admin Token
+	if tokenManager.IsAdminToken(tokenString) {
+		c.Set("user_type", "admin")
+		c.Next()
+		return
+	}
+
+	// 验证普通用户Token
+	userInfo, err := tokenManager.ValidateToken(tokenString)
+	if err != nil {
+		status := 10003 // 无效的token
+		ginApp.ResponseWithMsgAndCode(http.StatusUnauthorized, status, conf.GetAccountErr(status), nil)
+		c.Abort()
+		return
+	}
+
+	// 将用户信息保存到上下文
+	c.Set("user_type", "user")
+	c.Set("user_info", userInfo)
 	c.Next()
 }
-

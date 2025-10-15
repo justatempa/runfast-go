@@ -6,11 +6,9 @@ import (
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "qmp_go_schedule",
-	Short: "user relationship manage system",
-	Long:  `qmp_go_schedule is public master data service`,
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
+	Use:   "runfast-go",
+	Short: "runfast-go service",
+	Long:  `runfast-go is a service`,
 	Run: func(cmd *cobra.Command, args []string) {
 
 	},
@@ -24,4 +22,5 @@ func Execute() {
 
 func init() {
 	rootCmd.AddCommand(webCmd)
+	rootCmd.AddCommand(tokenCmd)
 }

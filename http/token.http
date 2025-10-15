@@ -1,0 +1,6 @@
+GET http://localhost:9999/admin/token/generate?user_info=test
+Accept: application/json
+Authorization: Bearer 6fd673e1d9cc92d44a978a6619f6d022fcede3bb454eeb413b1b7eac8e839a52
+
+###
+
