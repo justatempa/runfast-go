@@ -1,6 +1,7 @@
 package midderware
 
 import (
+	"github.com/justatempa/runfast-go/service"
 	"net/http"
 	"strings"
 
@@ -11,15 +12,15 @@ import (
 )
 
 // TokenManager 实例
-var tokenManager *app.TokenManager
+var tokenManager *service.TokenManager
 
 // InitTokenManager 初始化TokenManager
 func InitTokenManager(adminToken string) {
-	tokenManager = app.NewTokenManager(adminToken)
+	tokenManager = service.NewTokenManager(adminToken)
 }
 
 // GetTokenManager 获取TokenManager实例
-func GetTokenManager() *app.TokenManager {
+func GetTokenManager() *service.TokenManager {
 	return tokenManager
 }
 

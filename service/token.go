@@ -1,36 +1,37 @@
 package service
 
 import (
-	"github.com/justatempa/runfast-go/pkg/app"
+	"github.com/justatempa/runfast-go/model"
 )
 
 // TokenManager 实例指针
-var tokenManager *app.TokenManager
+var tokenManager *TokenManager
 
 // SetTokenManager 设置TokenManager实例
-func SetTokenManager(tm *app.TokenManager) {
+func SetTokenManager(tm *TokenManager) {
 	tokenManager = tm
 }
 
 // GenerateToken 生成用户Token
-func GenerateToken(userInfo string) (string, error) {
+func GenerateToken(tokenName string) (string, error) {
 	if tokenManager == nil {
 		return "", nil
 	}
-	return tokenManager.GenerateUserToken(userInfo)
+	return tokenManager.GenerateUserToken(tokenName)
 }
 
 // ListTokens 获取所有Token列表
-func ListTokens() map[string]string {
+func ListTokens() ([]model.AdminToken, error) {
 	if tokenManager == nil {
-		return make(map[string]string)
+		return make([]model.AdminToken, 0), nil
 	}
 	return tokenManager.ListTokens()
 }
 
 // RemoveToken 删除Token
-func RemoveToken(tokenString string) {
+func RemoveToken(tokenString string) error {
 	if tokenManager != nil {
-		tokenManager.RemoveToken(tokenString)
+		return tokenManager.RemoveToken(tokenString)
 	}
+	return nil
 }

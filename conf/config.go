@@ -20,6 +20,7 @@ type AppConfig struct {
 	LogLevel    string
 	TimeFormat  string
 }
+
 type ServerConfig struct {
 	RunMode      string
 	HttpPort     int
@@ -28,9 +29,19 @@ type ServerConfig struct {
 	Node         int
 }
 
+// DatabaseConfig 数据库配置
+type DatabaseConfig struct {
+	Host     string
+	Port     int
+	User     string
+	Password string
+	Name     string
+}
+
 type Config struct {
-	App    AppConfig
-	Server ServerConfig
+	App      AppConfig
+	Server   ServerConfig
+	Database DatabaseConfig
 }
 
 var GlobalConfig = &Config{}
@@ -66,4 +77,9 @@ func Setup() {
 // GetConfig 获取配置
 func GetConfig() *Config {
 	return GlobalConfig
+}
+
+// GetDatabaseConfig 获取数据库配置
+func GetDatabaseConfig() *DatabaseConfig {
+	return &GlobalConfig.Database
 }

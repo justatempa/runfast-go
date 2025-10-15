@@ -12,3 +12,10 @@ server:
   ReadTimeout: 60
   WriteTimeout: 60
   Node: 1
+
+database:
+  Host: mysql2.sqlpub.com
+  Port: 3307
+  User: runfast_go
+  Password:
+  Name: runfast_go

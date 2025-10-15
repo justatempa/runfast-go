@@ -2,10 +2,9 @@ package cmd
 
 import (
 	"fmt"
-	"os"
-
-	"github.com/justatempa/runfast-go/pkg/app"
+	"github.com/justatempa/runfast-go/service"
 	"github.com/spf13/cobra"
+	"os"
 )
 
 var tokenCmd = &cobra.Command{
@@ -20,7 +19,7 @@ var generateTokenCmd = &cobra.Command{
 	Long:  `Generate a new admin token and save it to conf/admin_token.txt`,
 	Run: func(cmd *cobra.Command, args []string) {
 		// 创建TokenManager实例
-		tokenManager := app.NewTokenManager("")
+		tokenManager := service.NewTokenManager("")
 
 		// 生成新的Admin Token
 		adminToken, err := tokenManager.GenerateAdminToken()
