@@ -17,5 +17,9 @@ database:
   Host: mysql2.sqlpub.com
   Port: 3307
   User: runfast_go
-  Password:
+  Password: ${RUNFAST_DATABASE_PASSWORD}
   Name: runfast_go
+
+admin:
+  username: admin
+  password: xx997755

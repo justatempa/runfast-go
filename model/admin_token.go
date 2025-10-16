@@ -15,6 +15,9 @@ type AdminToken struct {
 	ExpiredAt *time.Time `json:"expired_at" gorm:"type:datetime"`
 }
 
+func (AdminToken) TableName() string {
+	return "admin_token"
+}
 func CreateAdminToken(adminToken AdminToken) (int, error) {
 	result := database.GetDB().Model(&adminToken).Create(&adminToken).Error
 	return adminToken.ID, result

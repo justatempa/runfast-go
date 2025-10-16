@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/justatempa/runfast-go/pkg/database"
 	"os"
 	"path"
 	"runtime"
@@ -30,6 +31,8 @@ func Setup(chdir bool) {
 	conf.Setup()
 
 	logger.Setup()
+
+	database.InitDB()
 
 	logger.Info("项目启动完毕")
 }

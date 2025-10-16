@@ -38,8 +38,11 @@ func (tm *TokenManager) GenerateAdminToken() (string, error) {
 }
 
 // GenerateUserToken 生成用户Token
-func (tm *TokenManager) GenerateUserToken(tokenName string) (string, error) {
-	expire := time.Now().Add(time.Hour * 24)
+func (tm *TokenManager) GenerateUserToken(tokenName string, expireMinus int) (string, error) {
+	if expireMinus <= 0 {
+		expireMinus = 24 * 60 * 90
+	}
+	expire := time.Now().Add(time.Minute * time.Duration(expireMinus))
 	claims := jwt.MapClaims{
 		"user": tokenName,
 		"exp":  expire.Unix(), // Token有效期24小时

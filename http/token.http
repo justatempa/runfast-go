@@ -1,7 +1,24 @@
 @token = 6fd673e1d9cc92d44a978a6619f6d022fcede3bb454eeb413b1b7eac8e839a52
 
-GET http://localhost:9999/admin/token/generate?user_info=test
+GET http://localhost:9999/admin/token/generate?token_name=test&expire_minus=9999
 Accept: application/json
 Authorization: Bearer {{token}}
-###
+
+
+### 查询token
+GET http://localhost:9999/admin/token/list
+Accept: application/json
+Authorization: Bearer {{token}}
+
+
+### 登录
+POST http://localhost:9999/admin/login
+Accept: application/json
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "xx997755"
+}
+
 

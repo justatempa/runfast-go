@@ -1,0 +1,14 @@
+CREATE TABLE `admin_token` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `created_at` datetime(3) NOT NULL,
+  `updated_at` datetime(3) NOT NULL,
+  `deleted_at` datetime(3) NULL DEFAULT NULL,
+  `token` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL COMMENT 'admin 或 user',
+  `expired_at` datetime(3) NULL DEFAULT NULL,
+
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_token` (`token`),
+  KEY `idx_deleted_at` (`deleted_at`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

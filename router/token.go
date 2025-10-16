@@ -1,6 +1,7 @@
 package router
 
 import (
+	"github.com/spf13/cast"
 	"net/http"
 
 	"github.com/justatempa/runfast-go/pkg/app"
@@ -17,6 +18,7 @@ func GenerateToken(c *gin.Context) {
 
 	// 从请求中获取token名称
 	tokenName := c.Query("token_name")
+	expireMinus := c.Query("expire_minus")
 	if tokenName == "" {
 		status := 10004 // Token名称不能为空
 		ginApp.ResponseWithMsgAndCode(http.StatusBadRequest, status, "Token名称不能为空", nil)
@@ -24,7 +26,7 @@ func GenerateToken(c *gin.Context) {
 	}
 
 	// 生成Token
-	token, err := service.GenerateToken(tokenName)
+	token, err := service.GenerateToken(tokenName, cast.ToInt(expireMinus))
 	if err != nil {
 		status := 10005 // 生成Token失败
 		ginApp.ResponseWithMsgAndCode(http.StatusInternalServerError, status, "生成Token失败", nil)

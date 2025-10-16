@@ -20,6 +20,9 @@ func Router() *gin.Engine {
 	// 注册Token相关路由
 	tokenAPI(r)
 
+	// 注册管理员相关路由
+	adminAPI(r)
+
 	api(r)
 	return r
 }
@@ -55,4 +58,10 @@ func tokenAPI(r *gin.Engine) {
 	admin.GET("/token/generate", GenerateToken)
 	admin.GET("/token/list", ListTokens)
 	admin.GET("/token/remove", RemoveToken)
+}
+
+// adminAPI 注册管理员相关路由
+func adminAPI(r *gin.Engine) {
+	// 管理员登录接口，不需要认证
+	r.POST("/admin/login", AdminLogin)
 }

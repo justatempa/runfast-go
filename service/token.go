@@ -13,11 +13,11 @@ func SetTokenManager(tm *TokenManager) {
 }
 
 // GenerateToken 生成用户Token
-func GenerateToken(tokenName string) (string, error) {
+func GenerateToken(tokenName string, expireMinus int) (string, error) {
 	if tokenManager == nil {
 		return "", nil
 	}
-	return tokenManager.GenerateUserToken(tokenName)
+	return tokenManager.GenerateUserToken(tokenName, expireMinus)
 }
 
 // ListTokens 获取所有Token列表
